@@ -10,37 +10,54 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int n=0,d;
+            int n=0;
+            double d=0;
 
             //Getting data from user
             bool isInt = false;
+            bool isDouble = false;
             while (!isInt)
             {
                 Console.Write("Please enter number of row values: ");
                 isInt = int.TryParse(Console.ReadLine(), out n);
                 if (!isInt)
-                    Console.WriteLine("Type an integer value !");
+                    Console.WriteLine("Type an int value !");
             }
 
-            int[] arrayOfX = new int[n];
-            int[] arrayOfY = new int[n];
+            double[] arrayOfX = new double[n];
+            double[] arrayOfY = new double[n];
+
             for (int i=0; i<n; i++)
             {
-                Console.Write($"Please enter value num {i+1}: ");
-                int.TryParse(Console.ReadLine(), out arrayOfX[i]);
+
+                isDouble = false;
+                while(!isDouble)
+                {
+                    Console.Write($"Please enter value num {i+1}: ");
+                    isDouble = double.TryParse(Console.ReadLine(), out arrayOfX[i]);
+                    if(!isDouble)
+                        Console.WriteLine("Type an int, float or double value !");
+                }
+
             }
 
-            Console.Write("Please enter number fractional difference parameter(d):");
-            int.TryParse(Console.ReadLine(), out d);
+            isDouble = false;
+            while(!isDouble)
+            {
+                Console.Write("Please enter number fractional difference parameter(d):");
+                isDouble = double.TryParse(Console.ReadLine(), out d);
+                    if(!isDouble)
+                        Console.WriteLine("Type an int, float or double value !");
+            }
 
 
             //Сalculation
             for (int t = 1; t <= n; t++)
             {
-                int sum = 0;
+                double sum = 0;
                 for(int k = 1; k <= (t - 1); k++)
                 {
-                    int prod = 1;
+                    double prod = 1;
                     for(int i = 1; i<= k; i++)
                     {
                         prod *= d - i + 1;
@@ -54,8 +71,9 @@ namespace ConsoleApp1
             //Output data
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"{i} pair: {arrayOfX[i]} : {arrayOfY[i]}");
+                Console.WriteLine($"{i+1} pair: X = {arrayOfX[i]}, Y = {arrayOfY[i]};");
             }
+            Console.ReadLine();
 
 
         }

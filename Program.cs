@@ -71,7 +71,7 @@ namespace ConsoleApp1
             //Output data
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"{i+1} pair: X = {arrayOfX[i]}, Y = {arrayOfY[i]};");
+                Console.WriteLine($"Y({i+1}) = {arrayOfY[i]};");
             }
             Console.ReadLine();
 
